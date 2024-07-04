@@ -14,6 +14,26 @@ import { FullComponent } from './layouts/full/full.component';
 import { AppHeaderComponent } from './layouts/full/header/header.component';
 import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SignupComponent } from './signup/signup.component';
+import {NgxUiLoaderConfig, SPINNER, PB_DIRECTION, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  bgsColor: '#00ACC1', // Background spinner color
+  bgsOpacity: 0.5, // Background spinner opacity
+  bgsPosition: 'bottom-right', // Background spinner position
+  bgsSize: 60, // Background spinner size
+  fgsColor: '#FF0000', // Foreground spinner color
+  fgsPosition: 'center-center', // Foreground spinner position
+  fgsSize: 60, // Foreground spinner size
+  logoUrl: '', // Custom logo URL
+  pbColor: '#00ACC1', // Progress bar color
+  pbDirection: PB_DIRECTION.leftToRight, // Progress bar direction (left-to-right)
+  pbThickness: 3, // Progress bar thickness
+  fgsType: SPINNER.ballSpinClockwise, // Spinner type (Square Jelly Box)
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +41,9 @@ import { HttpClientModule } from '@angular/common/http';
     BestSellerComponent,
     FullComponent,
     AppHeaderComponent,
-    AppSidebarComponent
+    AppSidebarComponent,
+    SignupComponent,
+    ForgetPasswordComponent
    ],
   imports: [
     BrowserModule,
@@ -32,7 +54,8 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FlexLayoutModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig) // Use ngxUiLoaderConfig in forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
