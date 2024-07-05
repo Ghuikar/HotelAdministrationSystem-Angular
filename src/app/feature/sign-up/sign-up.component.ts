@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { UserService } from '../services/user.service';
-import { SnackbarService } from '../services/snackbar.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SnackbarService } from 'src/app/services/snackbar.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class SignUpComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private ngxService: NgxUiLoaderService,
     private userService: UserService,
     private snackbarService: SnackbarService,
-    private dialogRef: MatDialogRef<SignupComponent>,
+    private dialogRef: MatDialogRef<SignUpComponent>,
     private router: Router
-  ) {}
+  ) {  }
 
   signupForm!: FormGroup;
 

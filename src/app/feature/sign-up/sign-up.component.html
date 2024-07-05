@@ -1,0 +1,50 @@
+<form [formGroup]="signupForm" (ngSubmit)="handleSubmit()">
+
+  <div class="form-container">
+    <mat-toolbar color="primary">
+    <span>Sign Up</span>
+  </mat-toolbar>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter your name" required>
+      <mat-error *ngIf="signupForm.get('name')?.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Enter your email" required>
+      <mat-error *ngIf="signupForm.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="signupForm.get('email')?.hasError('email')">
+        Enter a valid email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contact Number</mat-label>
+      <input matInput formControlName="contactnumber" placeholder="Enter your contact number" required>
+      <mat-error *ngIf="signupForm.get('contactnumber')?.hasError('required')">
+        Contact number is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" placeholder="Enter your password" type="password" required>
+      <mat-error *ngIf="signupForm.get('password')?.hasError('required')">
+        Password is required
+      </mat-error>
+      <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">
+        Password must be at least 6 characters long
+      </mat-error>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button class="submit-btn" type="submit" [disabled]="signupForm.invalid">Submit</button>
+      <button mat-raised-button class="close-btn" type="button" (click)="close()">Close</button>
+    </div>
+  </div>
+</form>

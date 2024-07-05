@@ -14,10 +14,7 @@ import { FullComponent } from './layouts/full/full.component';
 import { AppHeaderComponent } from './layouts/full/header/header.component';
 import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SignupComponent } from './signup/signup.component';
 import {NgxUiLoaderConfig, SPINNER, PB_DIRECTION, NgxUiLoaderModule } from 'ngx-ui-loader';
-import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: '#00ACC1', // Background spinner color
@@ -41,9 +38,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     BestSellerComponent,
     FullComponent,
     AppHeaderComponent,
-    AppSidebarComponent,
-    SignupComponent,
-    ForgetPasswordComponent
+    AppSidebarComponent
+
    ],
   imports: [
     BrowserModule,

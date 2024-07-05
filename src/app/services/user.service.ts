@@ -7,11 +7,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
 
   baseUrl = environment.apiUrl;
 
-  signup(data: any, endpoint: string):Observable<any> {
+  constructor(private http: HttpClient) {}
+
+  private postRequest(data: any, endpoint: string): Observable<any> {
     const url = this.baseUrl + endpoint;
 
     const headers = new HttpHeaders({
@@ -21,15 +22,16 @@ export class UserService {
     return this.http.post(url, data, { headers });
   }
 
+  signup(data: any, endpoint: string): Observable<any> {
+    return this.postRequest(data, endpoint);
+  }
 
   forgetPassword(data: any, endpoint: string): Observable<any> {
-    const url = this.baseUrl + endpoint;
+    return this.postRequest(data, endpoint);
+  }
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
-    return this.http.post(url, data, { headers });
+  login(data: any, endpoint: string): Observable<any> {
+    return this.postRequest(data, endpoint);
   }
 
 }

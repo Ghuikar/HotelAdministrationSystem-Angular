@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { FullComponent } from './layouts/full/full.component';
 
-const routes: Routes = [ 
+const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'cafe',
@@ -16,20 +16,28 @@ const routes: Routes = [
       },
       {
         path: '',
-        loadChildren:
-          () => import('./material-component/material.module').then(m => m.MaterialComponentsModule),
+        loadChildren: () =>
+          import('./material-component/material.module').then(
+            (m) => m.MaterialComponentsModule
+          ),
       },
       {
         path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-      }
-    ]
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+      },
+    ],
   },
-  { path: '**', component: HomeComponent }
+  {
+    path: 'feature',
+    loadChildren: () =>
+      import('./feature/feature.module').then((m) => m.FeatureModule),
+  },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

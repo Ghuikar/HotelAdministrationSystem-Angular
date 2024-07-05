@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { SnackbarService } from '../services/snackbar.service';
-import { UserService } from '../services/user.service';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SnackbarService } from 'src/app/services/snackbar.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-forget-password',
-  templateUrl: './forget-password.component.html',
-  styleUrls: ['./forget-password.component.scss'],
+  selector: 'app-forget-passwords',
+  templateUrl: './forget-passwords.component.html',
+  styleUrls: ['./forget-passwords.component.scss']
 })
-export class ForgetPasswordComponent implements OnInit {
+export class ForgetPasswordsComponent implements OnInit {
+
   constructor(
     private formBuilder: FormBuilder,
     private ngxService: NgxUiLoaderService,
     private userService: UserService,
     private snackbarService: SnackbarService,
-    private dialogRef: MatDialogRef<ForgetPasswordComponent>
+    private dialogRef: MatDialogRef<ForgetPasswordsComponent>
   ) {}
 
   forgetPasswordForm!: FormGroup;
@@ -32,7 +32,7 @@ export class ForgetPasswordComponent implements OnInit {
     this.ngxService.start();
     const payload = this.forgetPasswordForm.value;
     this.userService.forgetPassword(payload, '/user/forget-password').subscribe(
-      (res) => {
+      (res:any) => {
         this.ngxService.stop();
         this.dialogRef.close();
         this.snackbarService.openSnackBar(res.message, '');
@@ -50,4 +50,5 @@ export class ForgetPasswordComponent implements OnInit {
     console.log('Close');
     this.dialogRef.close();
   }
+
 }
