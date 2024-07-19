@@ -115,6 +115,13 @@ body {
   background-color: #afbb4c;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+}
+
 nav {
   display: flex;
   width: 90%;
@@ -213,12 +220,7 @@ a:hover::after {
   }
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100% !important;
-}
+
 
 .mat-icon {
   vertical-align: middle;

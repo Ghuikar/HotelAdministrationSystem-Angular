@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../feature/login/login.component';
 import { SignUpComponent } from '../feature/sign-up/sign-up.component';
 import { ForgetPasswordsComponent } from '../feature/forget-passwords/forget-passwords.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +11,19 @@ import { ForgetPasswordsComponent } from '../feature/forget-passwords/forget-pas
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private dialog: MatDialog) {
-    console.log("home loaded")
+  constructor(private dialog: MatDialog, private router:Router) {
+
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (localStorage.getItem('authToken') !== null) {
+      this.router.navigate(['/cafe/dashboard']);
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
+
+
 
   signup() {
     const dialogRef = this.dialog.open(SignUpComponent, {
@@ -23,24 +32,21 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  login(){
+  login() {
     // import('../feature/feature.module').then(m => {
-      // console.log("m",m.FeatureModule)
-      const dialogRef = this.dialog.open(LoginComponent  , {
-        width: '550px',
-      });
+    // console.log("m",m.FeatureModule)
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '550px',
+    });
     // });
-
   }
 
-
   forgetPassword() {
-    const dialogRef = this.dialog.open(ForgetPasswordsComponent  , {
+    const dialogRef = this.dialog.open(ForgetPasswordsComponent, {
       width: '550px',
     });
     // this.dialog.open(ForgetPasswordComponent, {
     //   width: '550px',
     // });
   }
-
 }

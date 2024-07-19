@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.ngxService.stop();
       this.dialogRef.close();
       this.snackbarService.openSnackBar(res?.message, '');
-      this.router.navigate(['/']);
+      // this.router.navigate(['/']);
       const token = res.token;
       localStorage.setItem('authToken', token);
     },

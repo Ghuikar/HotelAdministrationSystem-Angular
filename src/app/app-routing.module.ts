@@ -6,20 +6,12 @@ import { FullComponent } from './layouts/full/full.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
-    path: 'cafe',
-    component: FullComponent,
+    path: 'cafe', component: FullComponent,
     children: [
       {
         path: '',
-        redirectTo: '/cafe/dashboard',
+        redirectTo: 'dashboard',
         pathMatch: 'full',
-      },
-      {
-        path: '',
-        loadChildren: () =>
-          import('./material-component/material.module').then(
-            (m) => m.MaterialComponentsModule
-          ),
       },
       {
         path: 'dashboard',
@@ -35,6 +27,9 @@ const routes: Routes = [
   },
   { path: '**', component: HomeComponent },
 ];
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
